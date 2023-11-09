@@ -22,16 +22,21 @@ const hideMenu = function () {
   dropdownMenu.style.opacity = 0;
 };
 
-select.addEventListener('mouseover', function () {
-  console.log('Active!');
-  showMenu();
+let toggle = false;
+
+select.addEventListener('click', () => {
+  console.log(toggle);
+  if (!toggle) {
+    showMenu();
+    toggle = true;
+  } else {
+    hideMenu();
+    toggle = false;
+  }
+  console.log(toggle);
 });
 
-dropdownMenu.addEventListener('mouseleave', function () {
+navBar.addEventListener('mouseleave', () => {
   hideMenu();
-});
-
-navBar.addEventListener('mouseleave', function () {
-  console.log('TESTING');
-  hideMenu();
+  toggle = false;
 });
